@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     #region KID
@@ -8,12 +10,18 @@ public class GameManager : MonoBehaviour
     public GameObject[] cards;
     [Header("發牌按鈕")]
     public Button btnGetCard;
-    
+    [Header("結算畫面")]
+    public GameObject EndInterFace;
+    [Header("勝負判定文字")]
+    public Text JudgeText;
+    public int State;
+
     private int player, pc;     // 玩家、電腦卡片編號
 
     private void Start()
     {
         aud = GetComponent<AudioSource>();
+        EndInterFace.SetActive(false);
     }
 
     /// <summary>
@@ -34,6 +42,8 @@ public class GameManager : MonoBehaviour
     private void PcGetCard()
     {
         pc = GetCard(new Vector3(0, 3, 0));
+        State = player - pc;
+        StartCoroutine(GameWinner());
     }
 
     /// <summary>
@@ -69,9 +79,40 @@ public class GameManager : MonoBehaviour
     /// 電腦卡片編號：pc
     /// 顯示結算畫面
     /// </summary>
-    private void GameWinner()
+    IEnumerator GameWinner()
     {
-        
+        yield return new WaitForSeconds(1);
+        Time.timeScale = 0;
+        if (State > 0)
+        {
+            print("Win");
+            JudgeText.text = "Win";
+            yield return 0;
+
+        }
+        if (State < 0)
+        {
+            print("Lose");
+            JudgeText.text = "Lose";
+            yield return 2;
+        }
+        else
+        {
+            print("draw");
+            JudgeText.text = "Draw";
+            yield return 1;
+        }
+
+
+        EndInterFace.SetActive(true);
+
+
+
+    }
+    public void ReGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("練習場景");
     }
     #endregion
 }

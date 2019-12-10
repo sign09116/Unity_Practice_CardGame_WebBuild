@@ -188,7 +188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u91CD\u4F86"
+  m_Text: "\u518D\u6230"
 --- !u!222 &242666544
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -530,6 +530,9 @@ MonoBehaviour:
   - {fileID: 100000, guid: da2d1fefc52dcde4db0b9c8ab07e55a3, type: 3}
   - {fileID: 100000, guid: b6cf9c34e3fc75646bb7d83e75ecd2eb, type: 3}
   btnGetCard: {fileID: 1117043966}
+  EndInterFace: {fileID: 1575089947}
+  JudgeText: {fileID: 2121032004}
+  State: 0
   soundGetCard: {fileID: 8300000, guid: ba2eb27d5ca5d0849b5a056ca8436a28, type: 3}
   soundWin: {fileID: 8300000, guid: c56457de3a8bf4d4d8191bddca0a4d82, type: 3}
   soundLose: {fileID: 8300000, guid: e954741e0310d6e439a4e614f15ee793, type: 3}
@@ -941,6 +944,7 @@ GameObject:
   - component: {fileID: 1511313313}
   - component: {fileID: 1511313312}
   - component: {fileID: 1511313311}
+  - component: {fileID: 1511313314}
   m_Layer: 5
   m_Name: "\u91CD\u65B0\u904A\u6232"
   m_TagString: Untagged
@@ -1047,6 +1051,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511313309}
   m_CullTransparentMesh: 0
+--- !u!114 &1511313314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511313309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 975463748}
+          m_MethodName: ReGame
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1575089947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1575089948
 RectTransform:
   m_ObjectHideFlags: 0

@@ -7,13 +7,22 @@ public class GameManager : MonoBehaviour
     #region KID
     [Header("卡片陣列")]
     public GameObject[] cards;
+    [Header("發牌按鈕")]
+    public Button btnGetCard;
+    
     private int player, pc;     // 玩家、電腦卡片編號
+
+    private void Start()
+    {
+        aud = GetComponent<AudioSource>();
+    }
 
     /// <summary>
     /// 玩家取得卡片
     /// </summary>
     public void PlayerGetCard()
     {
+        btnGetCard.interactable = false;
         player = GetCard(new Vector3(0, -3, 0));
 
         Invoke("PcGetCard", 1.5f);
@@ -35,6 +44,8 @@ public class GameManager : MonoBehaviour
     /// <returns>取得的卡片編號</returns>
     private int GetCard(Vector3 pos)
     {
+        aud.PlayOneShot(soundGetCard);
+
         int r = Random.Range(0, cards.Length);
 
         Instantiate(cards[r], pos, Quaternion.Euler(0, 180, 0));
@@ -44,6 +55,14 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 練習區域
+    [Header("音效區域")]
+    public AudioClip soundGetCard;  // 發牌
+    public AudioClip soundWin;      // 獲勝
+    public AudioClip soundLose;     // 失敗
+    public AudioClip soundTie;      // 平手
+
+    private AudioSource aud;        // 音效來源：喇叭
+
     public GameObject final;
     public Text textFinal;
 
@@ -63,16 +82,18 @@ public class GameManager : MonoBehaviour
         if (player > pc)
         {
             textFinal.text = "恭喜你獲勝啦!";
+            aud.PlayOneShot(soundWin);
         }
         else if (player == pc)
         {
             textFinal.text = "居然平手惹!!!";
+            aud.PlayOneShot(soundLose);
         }
         else
         {
             textFinal.text = "輸惹......";
+            aud.PlayOneShot(soundTie);
         }
-
         final.SetActive(true);
     }
     #endregion

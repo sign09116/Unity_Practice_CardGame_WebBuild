@@ -43,26 +43,30 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9796}
+      Script: {instanceID: 9674}
     - Class: 114
-      Script: {instanceID: 9944}
+      Script: {instanceID: 9822}
     - Class: 114
-      Script: {instanceID: 9984}
+      Script: {instanceID: 9862}
     - Class: 114
-      Script: {instanceID: 10350}
+      Script: {instanceID: 10228}
     - Class: 114
-      Script: {instanceID: 10684}
+      Script: {instanceID: 10562}
     - Class: 114
-      Script: {instanceID: 11124}
+      Script: {instanceID: 10938}
     - Class: 114
-      Script: {instanceID: 11464}
+      Script: {instanceID: 11004}
     - Class: 114
-      Script: {instanceID: 14040}
+      Script: {instanceID: 11344}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -368,6 +372,12 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: bfadfc6cad14a6be81ee3e99d0aebb88
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
       Hash: 3b760e6526e13f7504f59e210145899a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -492,12 +502,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 0a9855e16516463120d5d007a14924d4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: GameManager
   platform: 20
   scenePathNames:
   - "Assets/\u7DF4\u7FD2\u5834\u666F.unity"

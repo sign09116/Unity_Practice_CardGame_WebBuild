@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region KID
+    [Header("卡片陣列")]
     public GameObject[] cards;
-    private int player, pc;
+    private int player, pc;     // 玩家、電腦卡片編號
 
-    public GameObject final;
-    public Text textFinal;
-
+    /// <summary>
+    /// 玩家取得卡片
+    /// </summary>
     public void PlayerGetCard()
     {
         player = GetCard(new Vector3(0, -3, 0));
@@ -18,11 +20,19 @@ public class GameManager : MonoBehaviour
         Invoke("GameWinner", 2.5f);
     }
 
+    /// <summary>
+    /// 電腦取得卡片
+    /// </summary>
     private void PcGetCard()
     {
         pc = GetCard(new Vector3(0, 3, 0));
     }
 
+    /// <summary>
+    /// 取得卡片
+    /// </summary>
+    /// <param name="pos">卡片座標</param>
+    /// <returns>取得的卡片編號</returns>
     private int GetCard(Vector3 pos)
     {
         int r = Random.Range(0, cards.Length);
@@ -31,7 +41,23 @@ public class GameManager : MonoBehaviour
 
         return r + 1;
     }
+    #endregion
 
+    #region 練習區域
+    public GameObject final;
+    public Text textFinal;
+
+    public void Replay()
+    {
+        SceneManager.LoadScene("練習場景");
+    }
+
+    /// <summary>
+    /// 勝負顯示：使用玩家與電腦取得卡片判斷獲勝、平手或失敗
+    /// 玩家卡片編號：player
+    /// 電腦卡片編號：pc
+    /// 顯示結算畫面
+    /// </summary>
     private void GameWinner()
     {
         if (player > pc)
@@ -49,9 +75,5 @@ public class GameManager : MonoBehaviour
 
         final.SetActive(true);
     }
-
-    public void Replay()
-    {
-        SceneManager.LoadScene("練習場景");
-    }
+    #endregion
 }

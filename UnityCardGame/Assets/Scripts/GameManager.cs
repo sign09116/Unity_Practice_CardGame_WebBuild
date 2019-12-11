@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+
+
 public class GameManager : MonoBehaviour
 {
     #region KID
@@ -18,10 +20,13 @@ public class GameManager : MonoBehaviour
 
     private int player, pc;     // 玩家、電腦卡片編號
 
+
     private void Start()
     {
+
         aud = GetComponent<AudioSource>();
         EndInterFace.SetActive(false);
+
     }
 
     /// <summary>
@@ -33,7 +38,7 @@ public class GameManager : MonoBehaviour
         player = GetCard(new Vector3(0, -3, 0));
 
         Invoke("PcGetCard", 1.5f);
-        Invoke("GameWinner", 2.5f);
+
     }
 
     /// <summary>
@@ -42,8 +47,10 @@ public class GameManager : MonoBehaviour
     private void PcGetCard()
     {
         pc = GetCard(new Vector3(0, 3, 0));
-        State = player - pc;
-        StartCoroutine(GameWinner());
+        Invoke("GameWinner", 1.5f);
+        Invoke("GameOver", 1.5f);
+
+
     }
 
     /// <summary>
@@ -78,41 +85,56 @@ public class GameManager : MonoBehaviour
     /// 玩家卡片編號：player
     /// 電腦卡片編號：pc
     /// 顯示結算畫面
-    /// </summary>
-    IEnumerator GameWinner()
-    {
-        yield return new WaitForSeconds(1);
-        Time.timeScale = 0;
-        if (State > 0)
-        {
-            print("Win");
-            JudgeText.text = "Win";
-            yield return 0;
 
-        }
+    /// </summary>
+    /// <summary>
+    /// 判定遊戲勝負 當State為負值 則玩家失敗 反之玩家勝利 但A為例外持有A者為最大
+    /// </summary>
+    void GameWinner()
+    {
+        State = player - pc;
+        // Time.timeScale = 0;
         if (State < 0)
         {
-            print("Lose");
-            JudgeText.text = "Lose";
-            yield return 2;
+            if (player == 1)
+            {
+                JudgeText.text = "勝った！";
+                aud.PlayOneShot(soundWin);
+                return;
+            }
+            JudgeText.text = "負けちゃった～～";
+            aud.PlayOneShot(soundLose);
+            return;
+
+        }
+        else if (State > 0)
+        {
+            if (pc == 1)
+            {
+                JudgeText.text = "残念～～";
+                aud.PlayOneShot(soundLose);
+                return;
+            }
+            JudgeText.text = "勝った！";
+            aud.PlayOneShot(soundWin);
+            return;
         }
         else
         {
-            print("draw");
-            JudgeText.text = "Draw";
-            yield return 1;
+            JudgeText.text = "引き分けですね！";
+            aud.PlayOneShot(soundTie);
         }
-
-
-        EndInterFace.SetActive(true);
-
-
 
     }
     public void ReGame()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
+        btnGetCard.interactable = true;
         SceneManager.LoadScene("練習場景");
+    }
+    void GameOver()
+    {
+        EndInterFace.SetActive(true);
     }
     #endregion
 }

@@ -13,6 +13,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
@@ -65,6 +66,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10938}
     - Class: 114
       Script: {instanceID: 11004}
+    - Class: 114
+      Script: {instanceID: 11312}
     - Class: 114
       Script: {instanceID: 11344}
     - Class: 115
@@ -372,7 +375,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: bfadfc6cad14a6be81ee3e99d0aebb88
+      Hash: 346e2a097ee4af976dca16b6dc14e0a9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -505,4 +508,4 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - "Assets/\u7DF4\u7FD2\u5834\u666F.unity"
-  playerPath: C:/KID/Projects/Unity/Unity_Practice_CardGame_WebBuild/Web
+  playerPath: C:/Users/appedu/Desktop/WebCardGame
